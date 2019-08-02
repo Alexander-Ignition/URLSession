@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios' display-mode='raw' executeOnSourceChanges='false'>
+    <pages>
+        <page name='Introduction'/>
+        <page name='Table of Contents'/>
+        <page name='Snippet'/>
+        <page name='IO'/>
+        <page name='URL'/>
+        <page name='URLRequest'/>
+        <page name='URLResponse'/>
+        <page name='URLError'/>
+        <page name='URLSession'/>
+        <page name='URLSessionTask'/>
+        <page name='URLSessionDataTask'/>
+        <page name='URLSessionUploadTask'/>
+        <page name='URLSessionDownloadTask'/>
+        <page name='URLSessionStreamTask'/>
+        <page name='URLSessionTaskMetrics'/>
+        <page name='BackgroundTransferService'/>
+        <page name='Problems'/>
+        <page name='SessionManager'/>
+        <page name='URLProtocol'/>
+        <page name='Logging'/>
+        <page name='Mocking'/>
+        <page name='Cache'/>
+        <page name='HTTPCookie'/>
+        <page name='URLAuthenticationChallenge'/>
+    </pages>
+</playground>
