@@ -1,22 +1,17 @@
 import Foundation
 
-extension URLRequest: PropertyPlaygroundQuickLookable {
-    public var propertyDescriptions: [String] {
-        var properties = [String]()
-        properties.append("URL", with: url?.absoluteString)
-        properties.append("Cache Policy", with: cachePolicy.description)
-//        properties.append("Timeout Interval", with: timeoutInterval.description)
-//        properties.append("Main Document URL", with: mainDocumentURL?.absoluteString)
-//        properties.append("Network Service Type", with: networkServiceType.description)
-//        properties.append("Cellular Access", with: allowsCellularAccess.description)
-        properties.append("HTTP Method", with: httpMethod)
-        properties.append("HTTP Header Fields", with: allHTTPHeaderFields)
-        properties.append("HTTP Body", with: httpBody)
-//        properties.append("HTTP Body Stream", with: httpBodyStream?.description)
-//        properties.append("HTTP should handle Cookies", with: httpShouldHandleCookies)
-//        properties.append("HTTP should use Pipelining", with: httpShouldUsePipelining)
-        
-        return properties
+extension URLRequest: CustomPlaygroundDisplayConvertible {
+    public var playgroundDescription: Any {
+        let string = """
+        URL: \(unwrap: url)
+        HTTP method: \(unwrap: httpMethod)
+        HTTP header fields: \(unwrap: allHTTPHeaderFields)
+        HTTP body: \(unwrap: httpBody)
+        Timeout Interval: \(timeoutInterval)
+        Network Service Type: \(networkServiceType)
+        Cache Policy: \(cachePolicy)
+        """
+        return QuickLook(string)
     }
 }
 
@@ -37,6 +32,8 @@ extension URLRequest.CachePolicy: CustomStringConvertible {
             return "Return cache data Dont Load"
         case .reloadRevalidatingCacheData:
             return "Reload Revalidating cache data (Unimplemented)"
+        @unknown default:
+            return "\(self)"
         }
     }
 }
@@ -54,8 +51,13 @@ extension URLRequest.NetworkServiceType: CustomStringConvertible {
             return "Background traffic"
         case .voice:
             return "Voice data"
-        case .networkServiceTypeCallSignaling:
+        case .responsiveData:
+            return "Responsive Data"
+        case .callSignaling:
             return "Call Signaling"
+        @unknown default:
+            return "\(self)"
         }
     }
 }
+
